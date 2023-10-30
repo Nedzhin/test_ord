@@ -1,55 +1,11 @@
-// import 'package:flutter/material.dart';
-// import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-//
-// void main() {
-//   runApp(const MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       home: Scaffold(
-//         appBar: AppBar( leading: IconButton(onPressed: (){},icon: const Icon(LineAwesomeIcons.angle_left),),
-//         title: Text("Ordering"),),
-//         body: SingleChildScrollView(
-//           child: Container(
-//             child: Column(
-//               children: [
-//                 SizedBox(
-//                   width: 335,
-//                   child: Text(
-//                     'Step 1',
-//                     textAlign: TextAlign.center,
-//                     style: TextStyle(
-//                       color: Color(0xFF172027),
-//                       fontSize: 16,
-//                       fontFamily: 'SF Pro',
-//                       fontWeight: FontWeight.w400,
-//                       height: 0,
-//                       letterSpacing: 0.16,
-//                     ),
-//                   ),
-//                 ),
-//                 // Form(child: Column(
-//                 //
-//                 // )),
-//                 // SizedBox(),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+// Ther brief description of the full logic:
+// There is 4 stateless widgets and 1 main home stateful widget.
+// 2 widgets are for 'Recipient address'( add address form and select address form) and other 2 for the 'Sender Address'( add address form and select address form)
+// this 2 widgets will be selected by if logic and looking to the variable 'showRecipient Form'(this is modified by buttons)
+
 
 void main() => runApp(MyApp());
 
@@ -68,8 +24,11 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  // Variables for changing the 'Add address' and 'Select address' stateless widgets
   bool showRecipientForm = true;
   bool showSenderForm = true;
+
+  // Variables for changing the color
   Color RecepientAddButtonBackgroundColor = Color(0xFFEA560D);
   Color RecepientAddButtonFontColor = Colors.white;
   Color RecepientSelectButtonBackgroundColor = Color(0xFFE7ECF0);
@@ -79,26 +38,26 @@ class _OrderPageState extends State<OrderPage> {
   Color SenderAddButtonFontColor = Colors.white;
   Color SenderSelectButtonBackgroundColor = Color(0xFFE7ECF0);
   Color SenderSelectButtonFontColor =  Color(0xFF919DAB);
-  // void toggleRecipientForm() {
-  //   setState(() {
-  //     showRecipientForm = !showRecipientForm;
-  //   });
-  // }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(LineAwesomeIcons.angle_left, color: Colors.black,),
-        backgroundColor: Colors.white,
+        leading: Icon(
+          LineAwesomeIcons.angle_left,
+          color: Colors.black,),
+          backgroundColor: Colors.white,
         title: const Text('Ordering',
-        style: const TextStyle(
-          color: Colors.black,
-        ),),
+            style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+
             Container(
               padding: EdgeInsets.all(20),
               child: const Text(
@@ -223,8 +182,8 @@ class _OrderPageState extends State<OrderPage> {
                       ),],
                     ),
                   ),
-                  
-                  //Form(child: Column)
+
+                  // Logic for selecting the appropriate stateless widget
                   if(showRecipientForm)
                     RecipientAddressForm()
                   else
@@ -235,6 +194,7 @@ class _OrderPageState extends State<OrderPage> {
             ),
 
             SizedBox(height: 16),
+
             Container(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -255,6 +215,7 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                   ),
                   SizedBox(height: 16,),
+
                   SizedBox(
                     width: 320,
                     child: Row(
@@ -281,6 +242,7 @@ class _OrderPageState extends State<OrderPage> {
                           ),
                         ),
                         SizedBox(width: 7),
+
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
@@ -303,7 +265,7 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                   ),
 
-                  //Form(child: Column)
+                  // Logic for selecting the appropriate stateless widget
                   if (showSenderForm)
                     SenderAddressForm()
                   else
@@ -333,17 +295,13 @@ class _OrderPageState extends State<OrderPage> {
               ),
             ),
 
-
-
-
-             // Always visible sender address form
-             // Conditional recipient form
           ],
         ),
       ),
     );
   }
 }
+
 
 // Sender Form widget
 class SenderAddressForm extends StatelessWidget {
@@ -354,7 +312,6 @@ class SenderAddressForm extends StatelessWidget {
       child: Form(
         child: Column(
           children: <Widget>[
-
             // Input fields for recipient address
             SizedBox(
               width: double.infinity,
@@ -372,7 +329,6 @@ class SenderAddressForm extends StatelessWidget {
               ),
             ),
 
-
             SizedBox(height: 12,),
             TextFormField(
 
@@ -383,7 +339,6 @@ class SenderAddressForm extends StatelessWidget {
                   prefixIcon: Icon(LineAwesomeIcons.person_entering_booth)),
 
             ),
-
 
             SizedBox(height: 20,),
             SizedBox(
@@ -410,7 +365,6 @@ class SenderAddressForm extends StatelessWidget {
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)), prefixIcon: Icon(LineAwesomeIcons.mail_bulk)),
             ),
 
-
             SizedBox(height: 20,),
             SizedBox(
               width: double.infinity,
@@ -427,7 +381,6 @@ class SenderAddressForm extends StatelessWidget {
                 ),
               ),
             ),
-
             SizedBox(height: 12,),
             TextFormField(
               decoration: InputDecoration(
@@ -435,7 +388,9 @@ class SenderAddressForm extends StatelessWidget {
                 hintText: '+375294545687',
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)), prefixIcon: Icon(LineAwesomeIcons.phone),
               ),),
+
             const Divider(height: 16,),
+
             SizedBox(height: 12,),
             SizedBox(
               width: double.infinity,

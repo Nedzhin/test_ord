@@ -4,14 +4,14 @@ A new Flutter project.
 
 ## Getting Started
 
+Ther brief description of the full logic:
+There is 4 stateless widgets and 1 main home stateful widget.
+2 widgets are for 'Recipient address'( add address form and select address form) and other 2 for the 'Sender Address'( add address form and select address form)
+this 2 widgets will be selected by if logic and looking to the variable 'showRecipient Form'(this is modified by buttons)
+
+
+
+
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # test_ord
